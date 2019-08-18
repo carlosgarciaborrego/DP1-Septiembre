@@ -1,16 +1,17 @@
 
 package domain;
 
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -22,19 +23,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Access(AccessType.PROPERTY)
 public class Conference extends DomainEntity {
 
-	private String					title;
-	private String					acronym;
-	private String					venue;
-	private Date					submissionDeadLine;
-	private Date					notificacionDeadLine;
-	private Date					cameraReadyDeadLine;
-	private Date					startDate;
-	private Date					endDate;
-	private String					summary;
-	private Double					fee;
+	private String				title;
+	private String				acronym;
+	private String				venue;
+	private Date				submissionDeadLine;
+	private Date				notificacionDeadLine;
+	private Date				cameraReadyDeadLine;
+	private Date				startDate;
+	private Date				endDate;
+	private String				summary;
+	private Double				fee;
 
-	private Collection<Submission>	submissions;
-	private Collection<Activity>	activities;
+	private List<Submission>	submissions;
+	private List<Activity>		activities;
+	private Administrator		administrator;
 
 
 	@NotBlank
@@ -130,7 +132,7 @@ public class Conference extends DomainEntity {
 
 	@NotNull
 	@Min(0)
-	@Digits(fraction = 2, integer = 9)
+	@Digits(integer = 9, fraction = 2)
 	public Double getFee() {
 		return this.fee;
 	}
@@ -139,26 +141,31 @@ public class Conference extends DomainEntity {
 		this.fee = fee;
 	}
 
-	@OneToMany
-	@Valid
-	@NotNull
-	public Collection<Submission> getSubmissions() {
+	@OneToMany(cascade = CascadeType.ALL)
+	public List<Submission> getSubmissions() {
 		return this.submissions;
 	}
 
-	public void setSubmissions(final Collection<Submission> submissions) {
+	public void setSubmissions(final List<Submission> submissions) {
 		this.submissions = submissions;
 	}
 
-	@OneToMany
-	@Valid
-	@NotNull
-	public Collection<Activity> getActitity() {
+	@OneToMany(cascade = CascadeType.ALL)
+	public List<Activity> getActivities() {
 		return this.activities;
 	}
 
-	public void setActivity(final Collection<Activity> activities) {
+	public void setActivities(final List<Activity> activities) {
 		this.activities = activities;
+	}
+
+	@ManyToOne(optional = false)
+	public Administrator getAdministrator() {
+		return this.administrator;
+	}
+
+	public void setAdministrator(final Administrator administrator) {
+		this.administrator = administrator;
 	}
 
 }

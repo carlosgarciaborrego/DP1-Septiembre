@@ -4,6 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,6 +15,7 @@ public class Presentation extends Activity {
 
 
 	@NotNull
+	@OneToOne(optional = false)
 	public Paper getCameraReadyVersion() {
 		return this.cameraReadyVersion;
 	}

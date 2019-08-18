@@ -26,7 +26,7 @@ public class Message extends DomainEntity {
 
 	private Actor	sender;
 	private Actor	receiver;
-	private Topic	topics;
+	private Topic	topic;
 
 
 	@NotNull
@@ -80,14 +80,13 @@ public class Message extends DomainEntity {
 	}
 
 	@NotNull
-	@Valid
 	@ManyToOne(optional = false)
-	public Topic getTopics() {
-		return this.topics;
+	public Topic getTopic() {
+		return this.topic;
 	}
 
-	public void setTopics(final Topic topics) {
-		this.topics = topics;
+	public void setTopic(final Topic topic) {
+		this.topic = topic;
 	}
 
 }

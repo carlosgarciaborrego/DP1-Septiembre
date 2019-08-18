@@ -19,46 +19,630 @@
 	<!-- User accounts -->
 
 	<bean id="userAccount1" class="security.UserAccount">
-		<property name="username" value="admin" />
+		<property name="username" value="administrator1" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
+					<property name="authority" value="ADMINISTRATOR" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 
 	<bean id="userAccount2" class="security.UserAccount">
-		<property name="username" value="customer" />
+		<property name="username" value="administrator2" />
 		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
+					<property name="authority" value="ADMINISTRATOR" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 
 	<bean id="userAccount3" class="security.UserAccount">
-		<property name="username" value="super" />
-		<property name="password" value="1b3231655cebb7a1f783eddf27d254ca" />
+		<property name="username" value="reviewer1" />
+		<property name="password" value="ffbc4675f864e0e9aab8bdf7a0437010" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
-				</bean>
-				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
+					<property name="authority" value="REVIEWER" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 	
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="reviewer2" />
+		<property name="password" value="5ce4d191fd14ac85a1469fb8c29b7a7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="REVIEWER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="author1" />
+		<property name="password" value="55feb130be438e686ad6a80d12dd8f44" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUTHOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="author2" />
+		<property name="password" value="78da4cd657c85d3cf54ae4497ed223f2" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUTHOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="author3" />
+		<property name="password" value="118ad5acc8ff3ea8006c280b310cd492" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUTHOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Configuration -->
+	
+	<bean id="configuration" class="domain.ConfigurationParameters">
+		<property name="systemName" value="AcmeConference"/>
+		<property name="banner" value="https://i.ibb.co/GVpZCtM/acme-conference.png"/>
+		<property name="welcomeMessageEn" value="Welcome to Acme Conference! Your scientific event manager"/>
+		<property name="welcomeMessageEs" value="¡Bienvenidos a Acme Conference! Su gestor de eventos científicos"/>
+		<property name="countryPhoneCode" value="+34"/>
+		<property name="creditCardMakes" value="VISA;MCARD;AMEX;DINNERS;FLY"/>
+	</bean>
 	<!-- Other domain beans come here -->	
 	
+	<bean id="administrator1" class="domain.Administrator">
+		<property name="name" value="Carlos"/>
+		<property name="middleName" value="Jesús"/>
+		<property name="surname" value="García Borrego"/>
+		<property name="photo" value="https://www.photo.com"/>
+		<property name="email" value="garciaborrego.carlos@gmail.com"/>
+		<property name="phone" value="+34789456123"/>
+		<property name="address" value="Calle Huelva"/>
+		<property name="userAccount" ref="userAccount1"/>
+	</bean>
 	
+	<bean id="administrator2" class="domain.Administrator">
+		<property name="name" value="David"/>
+		<property name="middleName" value=""/>
+		<property name="surname" value="Gutierrez Borrego"/>
+		<property name="photo" value="https://www.photo.com"/>
+		<property name="email" value="david@hotmail.com"/>
+		<property name="phone" value="663355220"/>
+		<property name="address" value="Calle Sevilla"/>
+		<property name="userAccount" ref="userAccount2"/>
+	</bean>
+	
+	<bean id="reviewer1" class="domain.Reviewer">
+		<property name="name" value="María"/>
+		<property name="middleName" value="José"/>
+		<property name="surname" value="López Broncano"/>
+		<property name="photo" value="https://www.photo.com"/>
+		<property name="email" value="marijos@gmail.com"/>
+		<property name="phone" value="+034789654123"/>
+		<property name="address" value="Calle Cádiz"/>
+		<property name="userAccount" ref="userAccount3"/>
+		<property name="expertise" value="juzgador,tolerante"/>
+	</bean>
+	
+	<bean id="reviewer2" class="domain.Reviewer">
+		<property name="name" value="Victor"/>
+		<property name="middleName" value=""/>
+		<property name="surname" value="Jimenéz Barrios"/>
+		<property name="photo" value="https://www.photo.com"/>
+		<property name="email" value="victorjb@hotmail.com"/>
+		<property name="phone" value=""/>
+		<property name="address" value="Calle Córdoba"/>
+		<property name="userAccount" ref="userAccount4"/>
+		<property name="expertise" value="estricto"/>
+	</bean>
+	
+	<bean id="author1" class="domain.Author">
+		<property name="name" value="Lourdes"/>
+		<property name="middleName" value=""/>
+		<property name="surname" value="Suárez Quiros"/>
+		<property name="photo" value="https://www.photo.com"/>
+		<property name="email" value="lourdes@gmail.com"/>
+		<property name="phone" value=""/>
+		<property name="address" value="Calle Granada"/>
+		<property name="userAccount" ref="userAccount5"/>
+	</bean>
+	
+	<bean id="author2" class="domain.Author">
+		<property name="name" value="Sara"/>
+		<property name="middleName" value=""/>
+		<property name="surname" value="García Sojo"/>
+		<property name="photo" value="https://www.photo.com"/>
+		<property name="email" value="sarita98@gmail.com"/>
+		<property name="phone" value="663399870"/>
+		<property name="address" value="Calle Málaga"/>
+		<property name="userAccount" ref="userAccount6"/>
+	</bean>
+	
+	<bean id="author3" class="domain.Author">
+		<property name="name" value="Samuel"/>
+		<property name="middleName" value=""/>
+		<property name="surname" value="Díaz Morros"/>
+		<property name="photo" value="https://www.photo.com"/>
+		<property name="email" value="samu15@hotmail.com"/>
+		<property name="phone" value=""/>
+		<property name="address" value="Calle Almería"/>
+		<property name="userAccount" ref="userAccount7"/>
+	</bean>
+	
+	<bean id="topic1" class="domain.Topic">
+		<property name="english" value="INQUIRY"/>
+		<property name="spanish" value="INVESTIGACIÓN"/>
+	</bean>
+	
+	<bean id="topic2" class="domain.Topic">
+		<property name="english" value="REFUTTAL"/>
+		<property name="spanish" value="REFUTACIÓN"/>
+	</bean>
+
+	<bean id="topic3" class="domain.Topic">
+		<property name="english" value="REGISTRATION"/>
+		<property name="spanish" value="REGISTRO"/>
+	</bean>	
+	
+	<bean id="topic4" class="domain.Topic">
+		<property name="english" value="TOPICS"/>
+		<property name="spanish" value="ASUNTOS"/>
+	</bean>
+		
+	<bean id="topic5" class="domain.Topic">
+		<property name="english" value="OTHER"/>
+		<property name="spanish" value="OTRO"/>
+	</bean>		
+		
+	<bean id="message1" class="domain.Message">
+		<property name="momentToSent" value="10/05/2015 10:43" />
+		<property name="subject" value="Message sent by Reviewer1" />
+		<property name="body" value="I have a problem with a report" />
+		<property name="sender" ref="reviewer1"/>
+		<property name="receiver" ref="administrator1"/>
+		<property name="topic" ref="topic5" />
+	</bean>
+
+	<bean id="message2" class="domain.Message">
+		<property name="momentToSent" value="12/05/2015 10:00" />
+		<property name="subject" value="Message sent by Administrator1" />
+		<property name="body" value="Solved"/>
+		<property name="sender" ref="administrator1"/>
+		<property name="receiver" ref="reviewer1"/>
+		<property name="topic" ref="topic5" />
+	</bean>
+	
+	<bean id="message3" class="domain.Message">
+		<property name="momentToSent" value="13/05/2015 18:00" />
+		<property name="subject" value="Message sent by Author2" />
+		<property name="body" value="Submission today" />
+		<property name="sender" ref="author2" />
+		<property name="receiver" ref="administrator1" />
+		<property name="topic" ref="topic3" />
+	</bean>
+	
+	<bean id="message4" class="domain.Message">
+		<property name="momentToSent" value="14/05/2015 10:00" />
+		<property name="subject" value="Message sent by Reviewer1" />
+		<property name="body" value="Rebuttal about your submission" />
+		<property name="sender" ref="reviewer1" />
+		<property name="receiver" ref="author2" />
+		<property name="topic" ref="topic2" />
+	</bean>
+	
+	<bean id="message5" class="domain.Message">
+		<property name="momentToSent" value="15/05/2015 20:00" />
+		<property name="subject" value="Message sent by Author3" />
+		<property name="body" value="Doubt about inquiry" />
+		<property name="sender" ref="author3" />
+		<property name="receiver" ref="administrator2" />
+		<property name="topic" ref="topic1" />
+	</bean>
+	
+	<bean id="message6" class="domain.Message">
+		<property name="momentToSent" value="15/05/2015 21:10" />
+		<property name="subject" value="Message sent by Administrator2" />
+		<property name="body" value="Doubt about inquiry" />
+		<property name="sender" ref="administrator2" />
+		<property name="receiver" ref="author3" />
+		<property name="topic" ref="topic1" />
+	</bean>
+	
+	<bean id="message7" class="domain.Message">
+		<property name="momentToSent" value="15/05/2015 21:10" />
+		<property name="subject" value="Message sent by Reviewer2" />
+		<property name="body" value="Opinion" />
+		<property name="sender" ref="reviewer2" />
+		<property name="receiver" ref="author3" />
+		<property name="topic" ref="topic5" />
+	</bean>
+	
+	<bean id="message8" class="domain.Message">
+		<property name="momentToSent" value="20/05/2015 11:00" />
+		<property name="subject" value="Message sent by Administrator1" />
+		<property name="body" value="Topics" />
+		<property name="sender" ref="administrator1" />
+		<property name="receiver" ref="administrator2" />
+		<property name="topic" ref="topic4" />
+	</bean>
+	
+	<bean id="message9" class="domain.Message">
+		<property name="momentToSent" value="25/05/2015 11:00" />
+		<property name="subject" value="Message sent by Author1" />
+		<property name="body" value="Change" />
+		<property name="sender" ref="author1" />
+		<property name="receiver" ref="author2" />
+		<property name="topic" ref="topic5" />
+	</bean>
+	
+	<bean id="message10" class="domain.Message">
+		<property name="momentToSent" value="23/05/2015 08:00" />
+		<property name="subject" value="Message sent by Administrator2" />
+		<property name="body" value="work room" />
+		<property name="sender" ref="administrator2" />
+		<property name="receiver" ref="author3" />
+		<property name="topic" ref="topic1" />
+	</bean>
+	
+	<bean id="paper1" class="domain.Paper">
+		<property name="title" value="Papel de repaso1"/>
+		<property name="summary" value="Resumen del documento para autor1"/>
+		<property name="author" value="Jorge y Lucía"/>
+		<property name="document" value="https://www.url.com"/>
+	</bean>
+	
+	<bean id="paper2" class="domain.Paper">
+		<property name="title" value="Papel de repaso2"/>
+		<property name="summary" value="Resumen del documento para autor2"/>
+		<property name="author" value="Jorge y Lucía"/>
+		<property name="document" value="https://www.url.com"/>
+	</bean>
+	
+	<bean id="paper3" class="domain.Paper">
+		<property name="title" value="Papel de repaso3"/>
+		<property name="summary" value="Resumen del documento para autor3"/>
+		<property name="author" value="Jorge y Lucía"/>
+		<property name="document" value="https://www.url.com"/>
+	</bean>
+	
+	<bean id="paper4" class="domain.Paper">
+		<property name="title" value="Papel de cámara1"/>
+		<property name="summary" value="Papel para el autor1"/>
+		<property name="author" value="Jorge y Lucía"/>
+		<property name="document" value="https://www.url.com"/>
+	</bean>
+	
+	<bean id="paper5" class="domain.Paper">
+		<property name="title" value="Papel de cámara3"/>
+		<property name="summary" value="Papel para el autor3"/>
+		<property name="author" value="Jorge y Lucía"/>
+		<property name="document" value="https://www.url.com"/>
+	</bean>
+	
+	<bean id="paper6" class="domain.Paper">
+		<property name="title" value="Papel de version1"/>
+		<property name="summary" value="Papel para el autor1"/>
+		<property name="author" value="Jorge y Lucía"/>
+		<property name="document" value="https://www.url.com"/>
+	</bean>
+	
+	<bean id="paper7" class="domain.Paper">
+		<property name="title" value="Papel de version2"/>
+		<property name="summary" value="Papel para el autor2"/>
+		<property name="author" value="Jorge y Lucía"/>
+		<property name="document" value="https://www.url.com"/>
+	</bean>
+	
+	<bean id="paper8" class="domain.Paper">
+		<property name="title" value="Papel de version3"/>
+		<property name="summary" value="Papel para el autor3"/>
+		<property name="author" value="Jorge y Lucía"/>
+		<property name="document" value="https://www.url.com"/>
+	</bean>
+	
+	<bean id="submission1" class="domain.Submission">
+		<property name="ticker" value="LXS-GH54"/>
+		<property name="momentToSent" value="02/06/2015 11:00"/>
+		<property name="status" value="ACCEPTED"/>
+		<property name="reviewPaper" ref="paper1"/>
+		<property name="cameraReadyPaper" ref="paper4"/>
+		<property name="author" ref="author1"/>
+	</bean>
+	
+	<bean id="submission2" class="domain.Submission">
+		<property name="ticker" value="SXG-43DD"/>
+		<property name="momentToSent" value="02/06/2015 13:00"/>
+		<property name="status" value="REJECTED"/>
+		<property name="reviewPaper" ref="paper2"/>
+		<property name="author" ref="author2"/>
+	</bean>
+	
+	<bean id="submission3" class="domain.Submission">
+		<property name="ticker" value="SXD-2SXS"/>
+		<property name="momentToSent" value="03/06/2015 12:15"/>
+		<property name="status" value="ACCEPTED"/>
+		<property name="reviewPaper" ref="paper3"/>
+		<property name="cameraReadyPaper" ref="paper5"/>
+		<property name="author" ref="author3"/>
+	</bean>
+	
+	<bean id="report1" class="domain.Report">
+		<property name="originalityScore" value="7.75"/>
+		<property name="qualityScore" value="6.50"/>
+		<property name="readabilityScore" value="7.00"/>
+		<property name="decision" value="ACCEPT"/>
+		<property name="reviewer" ref="reviewer1"/>
+		<property name="submission" ref="submission1"/>
+	</bean>
+	
+	<bean id="report2" class="domain.Report">
+		<property name="originalityScore" value="3.75"/>
+		<property name="qualityScore" value="4.50"/>
+		<property name="readabilityScore" value="5.00"/>
+		<property name="decision" value="REJECT"/>
+		<property name="reviewer" ref="reviewer1"/>
+		<property name="submission" ref="submission2"/>
+	</bean>
+	
+	<bean id="report3" class="domain.Report">
+		<property name="originalityScore" value="8.75"/>
+		<property name="qualityScore" value="7.50"/>
+		<property name="readabilityScore" value="9.00"/>
+		<property name="decision" value="ACCEPT"/>
+		<property name="reviewer" ref="reviewer2"/>
+		<property name="submission" ref="submission3"/>
+	</bean>
+	
+	<bean id="comment1" class="domain.Comment">
+		<property name="title" value="Aprobado"/>
+		<property name="momentToWrite" value="10/06/2015 12:00"/>
+		<property name="text" value="Enhorabuena por la presentación"/>
+		<property name="report" ref="report1"/>
+	</bean>
+	
+	<bean id="comment2" class="domain.Comment">
+		<property name="title" value="Suspenso"/>
+		<property name="momentToWrite" value="10/06/2015 14:00"/>
+		<property name="text" value="No ha estado a la altura"/>
+		<property name="report" ref="report2"/>
+	</bean>
+	
+	<bean id="panel1" class="domain.Panel">
+		<property name="title" value="panel"/>
+		<property name="startMoment" value="14/06/2015 10:00"/>
+		<property name="duration" value="45"/>
+		<property name="room" value="Salon Actos 1"/>
+		<property name="summary" value="resumen"/>
+		<property name="attachment" value=""/>
+		<property name="speaker">
+			<list>
+				<ref bean="administrator1"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="panel2" class="domain.Panel">
+		<property name="title" value="panel"/>
+		<property name="startMoment" value="14/06/2015 10:00"/>
+		<property name="duration" value="37"/>
+		<property name="room" value="Salon Actos 2"/>
+		<property name="summary" value="resumen"/>
+		<property name="attachment" value=""/>
+		<property name="speaker">
+			<list>
+				<ref bean="administrator2"/>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<bean id="section1" class="domain.Section">
+		<property name="title" value="Parte1"/>
+		<property name="summary" value="Resumen1"/>
+		<property name="picture" value=""/>
+	</bean>
+	
+	<bean id="section2" class="domain.Section">
+		<property name="title" value="Parte2"/>
+		<property name="summary" value="Resumen2"/>
+		<property name="picture" value=""/>
+	</bean>
+	
+	<bean id="section3" class="domain.Section">
+		<property name="title" value="Parte1"/>
+		<property name="summary" value="Resumen3"/>
+		<property name="picture" value=""/>
+	</bean>
+	
+	<bean id="tutorial1" class="domain.Tutorial">
+		<property name="title" value="tutorial1"/>
+		<property name="startMoment" value="14/06/2015 11:00"/>
+		<property name="duration" value="90"/>
+		<property name="room" value="Salon Actos 1"/>
+		<property name="summary" value="resumen"/>
+		<property name="attachment" value=""/>
+		<property name="speaker">
+			<list>
+				<ref bean="administrator1"/>
+			</list> 
+		</property>
+		<property name="sections">
+			<list>
+				<ref bean="section1"/>
+				<ref bean="section2"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="tutorial2" class="domain.Tutorial">
+		<property name="title" value="tutorial2"/>
+		<property name="startMoment" value="14/06/2015 11:00"/>
+		<property name="duration" value="45"/>
+		<property name="room" value="Salon Actos 2"/>
+		<property name="summary" value="resumen"/>
+		<property name="attachment" value=""/>
+		<property name="speaker">
+			<list>
+				<ref bean="administrator2"/>
+			</list>  
+		</property>
+		<property name="sections">
+			<list>
+				<ref bean="section3"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="presentation1" class="domain.Presentation">
+		<property name="title" value="presentación"/>
+		<property name="startMoment" value="14/06/2015 15:00"/>
+		<property name="duration" value="45"/>
+		<property name="room" value="Salon Actos 1"/>
+		<property name="summary" value="resumen"/>
+		<property name="attachment" value=""/>
+		<property name="speaker">
+			<list>
+				<ref bean="author1"/>
+			</list>
+		</property>
+		<property name="cameraReadyVersion" ref="paper6"/>
+	</bean>
+	
+	<bean id="presentation2" class="domain.Presentation">
+		<property name="title" value="presentación"/>
+		<property name="startMoment" value="14/06/2015 15:00"/>
+		<property name="duration" value="53"/>
+		<property name="room" value="Salon Actos 2"/>
+		<property name="summary" value="resumen"/>
+		<property name="attachment" value=""/>
+		<property name="speaker">
+			<list>
+				<ref bean="author3"/>
+			</list>
+		</property>
+		<property name="cameraReadyVersion" ref="paper7"/>
+	</bean>
+	
+	<bean id="conference1" class="domain.Conference">
+		<property name="title" value="Conferencia Nobel"/>
+		<property name="acronym" value="CN"/>
+		<property name="venue" value="New York"/>
+		<property name="submissionDeadLine" value="08/06/2015 09:00"/>
+		<property name="notificacionDeadLine" value="12/06/2015 09:00"/>
+		<property name="cameraReadyDeadLine" value="13/06/2015 09:00"/>
+		<property name="startDate" value="14/06/2015 08:00"/>
+		<property name="endDate" value="14/06/2015 20:00"/>
+		<property name="summary" value="Exclusiva conferencia"/>
+		<property name="fee" value="1000.00"/>
+		<property name="submissions">
+			<list>
+				<ref bean="submission1"/>
+			</list>		
+		</property>
+		<property name="activities">	
+			<list>
+				<ref bean="panel1"/>
+				<ref bean="tutorial1"/>
+				<ref bean="presentation1"/>
+			</list>
+		</property>
+		<property name="administrator" ref="administrator1"/>
+	</bean>
+	
+	<bean id="conference2" class="domain.Conference">
+		<property name="title" value="Conferencia Andaluza"/>
+		<property name="acronym" value="CA"/>
+		<property name="venue" value="Sevilla"/>
+		<property name="submissionDeadLine" value="08/06/2015 09:00"/>
+		<property name="notificacionDeadLine" value="12/06/2015 09:00"/>
+		<property name="cameraReadyDeadLine" value="13/06/2015 09:00"/>
+		<property name="startDate" value="14/06/2015 08:00"/>
+		<property name="endDate" value="14/06/2015 20:00"/>
+		<property name="summary" value="Para todo el público"/>
+		<property name="fee" value="10.50"/>
+		<property name="submissions">
+			<list>
+				<ref bean="submission3"/>
+			</list>		
+		</property>
+		<property name="activities">	
+			<list>
+				<ref bean="panel2"/>
+				<ref bean="tutorial2"/>
+				<ref bean="presentation2"/>
+			</list>
+		</property>
+		<property name="administrator" ref="administrator2"/>
+	</bean>
+	
+	
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holderName" value="persona1"/>
+		<property name="brandName" value="VISA"/>
+		<property name="number" value="7896325410120147"/>
+		<property name="expireMonth" value="01"/>
+		<property name="expireYear" value="2030"/>
+		<property name="cvv" value="111"/>
+	</bean>
+	
+	<bean id="creditCard2" class="domain.CreditCard">
+		<property name="holderName" value="persona2"/>
+		<property name="brandName" value="FLY"/>
+		<property name="number" value="1425369870456359"/>
+		<property name="expireMonth" value="03"/>
+		<property name="expireYear" value="2027"/>
+		<property name="cvv" value="222"/>
+	</bean>
+	
+	<bean id="creditCard3" class="domain.CreditCard">
+		<property name="holderName" value="persona3"/>
+		<property name="brandName" value="MCARD"/>
+		<property name="number" value="9685957422330125"/>
+		<property name="expireMonth" value="02"/>
+		<property name="expireYear" value="2023"/>
+		<property name="cvv" value="333"/>
+	</bean>
+	
+	<bean id="registration1" class="domain.Registration">
+		<property name="creditCard" ref="creditCard1"/>
+		<property name="conference" ref="conference1"/>
+		<property name="author" ref="author1"/>
+	</bean>
+	
+	<bean id="registration2" class="domain.Registration">
+		<property name="creditCard" ref="creditCard2"/>
+		<property name="conference" ref="conference1"/>
+		<property name="author" ref="author2"/>
+	</bean>
+	
+	<bean id="registration3" class="domain.Registration">
+		<property name="creditCard" ref="creditCard3"/>
+		<property name="conference" ref="conference2"/>
+		<property name="author" ref="author3"/>
+	</bean>
 	
 </beans>

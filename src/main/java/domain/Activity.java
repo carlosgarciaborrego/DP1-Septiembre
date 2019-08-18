@@ -2,10 +2,12 @@
 package domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
@@ -19,13 +21,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Access(AccessType.PROPERTY)
 public class Activity extends DomainEntity {
 
-	private String	title;
-	private Date	startMoment;
-	private Integer	duration;
-	private String	room;
-	private String	summary;
-	private String	attachments;
-	private Actor	speaker;
+	private String		title;
+	private Date		startMoment;
+	private Integer		duration;
+	private String		room;
+	private String		summary;
+	private String		attachment;
+	private List<Actor>	speaker;
 
 
 	@NotBlank
@@ -76,20 +78,21 @@ public class Activity extends DomainEntity {
 	}
 
 	@URL
-	public String getAttachements() {
-		return this.attachments;
+	public String getAttachment() {
+		return this.attachment;
 	}
 
-	public void setAttachements(final String attachements) {
-		this.attachments = attachements;
+	public void setAttachment(final String attachment) {
+		this.attachment = attachment;
 	}
 
 	@NotNull
-	public Actor getSpeaker() {
+	@ManyToMany
+	public List<Actor> getSpeaker() {
 		return this.speaker;
 	}
 
-	public void setSpeaker(final Actor speaker) {
+	public void setSpeaker(final List<Actor> speaker) {
 		this.speaker = speaker;
 	}
 

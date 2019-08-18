@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
@@ -17,7 +18,7 @@ public class Tutorial extends Activity {
 	private Collection<Section>	sections;
 
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@Valid
 	@NotNull
 	public Collection<Section> getSections() {

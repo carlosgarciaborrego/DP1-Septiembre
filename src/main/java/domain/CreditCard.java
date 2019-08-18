@@ -4,8 +4,8 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 
@@ -39,7 +39,7 @@ public class CreditCard extends DomainEntity {
 		this.brandName = brandName;
 	}
 
-	@CreditCardNumber
+	@NotNull
 	public String getNumber() {
 		return this.number;
 	}

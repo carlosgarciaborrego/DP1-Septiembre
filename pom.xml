@@ -13,7 +13,7 @@
 
 	<groupId>Design-and-Testing</groupId>
 	<artifactId>Acme-Conference</artifactId>
-	<version>1.0</version>
+	<version>1.6</version>
 	<packaging>war</packaging>
 
 	<properties>

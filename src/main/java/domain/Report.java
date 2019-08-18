@@ -5,7 +5,6 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -23,11 +22,10 @@ public class Report extends DomainEntity {
 	private Double		readabilityScore;
 	private String		decision;
 
-	private Reviewer	reviewers;
-	private Submission	submissions;
+	private Reviewer	reviewer;
+	private Submission	submission;
 
 
-	@NotNull
 	@Min(0)
 	@Max(10)
 	@Digits(fraction = 2, integer = 2)
@@ -39,7 +37,6 @@ public class Report extends DomainEntity {
 		this.originalityScore = originalityScore;
 	}
 
-	@NotNull
 	@Min(0)
 	@Max(10)
 	@Digits(fraction = 2, integer = 2)
@@ -51,7 +48,6 @@ public class Report extends DomainEntity {
 		this.qualityScore = qualityScore;
 	}
 
-	@NotNull
 	@Min(0)
 	@Max(10)
 	@Digits(fraction = 2, integer = 2)
@@ -69,30 +65,28 @@ public class Report extends DomainEntity {
 		return this.decision;
 	}
 
-	public void setDecicion(final String decision) {
+	public void setDecision(final String decision) {
 		this.decision = decision;
 	}
 
-	@ManyToOne(optional = false)
 	@NotNull
-	@Valid
-	public Reviewer getReviewers() {
-		return this.reviewers;
-	}
-
-	public void setReviewers(final Reviewer reviewers) {
-		this.reviewers = reviewers;
-	}
-
 	@ManyToOne(optional = false)
-	@NotNull
-	@Valid
-	public Submission getSubmissions() {
-		return this.submissions;
+	public Reviewer getReviewer() {
+		return this.reviewer;
 	}
 
-	public void setSubmissions(final Submission submissions) {
-		this.submissions = submissions;
+	public void setReviewer(final Reviewer reviewer) {
+		this.reviewer = reviewer;
+	}
+
+	@NotNull
+	@ManyToOne(optional = false)
+	public Submission getSubmission() {
+		return this.submission;
+	}
+
+	public void setSubmission(final Submission submission) {
+		this.submission = submission;
 	}
 
 }

@@ -8,6 +8,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -27,7 +28,7 @@ public class Submission extends DomainEntity {
 
 	private Paper	reviewPaper;
 	private Paper	cameraReadyPaper;
-	private Author	authors;
+	private Author	author;
 
 
 	@NotBlank
@@ -63,6 +64,7 @@ public class Submission extends DomainEntity {
 	}
 
 	@NotNull
+	@OneToOne(optional = false)
 	public Paper getReviewPaper() {
 		return this.reviewPaper;
 	}
@@ -71,7 +73,7 @@ public class Submission extends DomainEntity {
 		this.reviewPaper = reviewPaper;
 	}
 
-	@NotNull
+	@ManyToOne(optional = true)
 	public Paper getCameraReadyPaper() {
 		return this.cameraReadyPaper;
 	}
@@ -83,11 +85,11 @@ public class Submission extends DomainEntity {
 	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
-	public Author getAuthors() {
-		return this.authors;
+	public Author getAuthor() {
+		return this.author;
 	}
 
-	public void setAuthors(final Author authors) {
-		this.authors = authors;
+	public void setAuthor(final Author author) {
+		this.author = author;
 	}
 }
