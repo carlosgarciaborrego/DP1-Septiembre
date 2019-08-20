@@ -1,0 +1,7 @@
+select min(c.submissions.size), max(c.submissions.size), avg(c.submissions.size), (sqrt(sum(c.submissions.size * c.submissions.size)/count(c.submissions.size) - (avg(c.submissions.size)*avg(c.submissions.size)))) from Conference c;
+
+select min(c.registrations.size), max(c.registrations.size), avg(c.registrations.size), (sqrt(sum(c.registrations.size * c.registrations.size)/count(c.registrations.size) - (avg(c.registrations.size)*avg(c.registrations.size)))) from Conference c;
+
+select min(c.fee), max(c.fee), avg(c.fee), (sqrt(sum(c.fee * c.fee)/count(c.fee) - (avg(c.fee)*avg(c.fee)))) from Conference c;
+
+select avg(DATEDIFF(c.endDate, c.startDate)), min(DATEDIFF(c.endDate, c.startDate)), max(DATEDIFF(c.endDate, c.startDate)), (sqrt(sum(DATEDIFF(c.endDate, c.startDate) * DATEDIFF(c.endDate, c.startDate))/count(DATEDIFF(c.endDate, c.startDate)) - (avg(DATEDIFF(c.endDate, c.startDate))*avg(DATEDIFF(c.endDate, c.startDate)))))from Conference c;

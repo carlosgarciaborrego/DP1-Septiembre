@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -37,6 +38,7 @@ public class Conference extends DomainEntity {
 	private List<Submission>	submissions;
 	private List<Activity>		activities;
 	private Administrator		administrator;
+	private List<Registration>	registrations;
 
 
 	@NotBlank
@@ -66,6 +68,7 @@ public class Conference extends DomainEntity {
 		this.venue = venue;
 	}
 
+	@Valid
 	@NotNull
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -166,6 +169,15 @@ public class Conference extends DomainEntity {
 
 	public void setAdministrator(final Administrator administrator) {
 		this.administrator = administrator;
+	}
+
+	@OneToMany
+	public List<Registration> getRegistrations() {
+		return this.registrations;
+	}
+
+	public void setRegistrations(final List<Registration> registrations) {
+		this.registrations = registrations;
 	}
 
 }
